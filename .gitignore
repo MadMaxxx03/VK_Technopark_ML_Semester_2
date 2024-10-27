@@ -1,6 +1,10 @@
 *.csv
 *.npz
 *.pth
+*.pt
+*.yaml
 **/data/
+**/data_old/
 **/logs/
 **/MNIST/
+**/runs/
