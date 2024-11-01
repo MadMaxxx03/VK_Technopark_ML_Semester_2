@@ -21,9 +21,15 @@
     <ClCompile Include="test_lru.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="test_hashtable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lru.hpp">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="hashtable.hpp">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

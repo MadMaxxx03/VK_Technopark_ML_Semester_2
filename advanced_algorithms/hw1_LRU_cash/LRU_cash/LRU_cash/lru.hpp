@@ -3,7 +3,6 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
-#include <sstream>
 #include <iostream>
 
 template<typename Key, typename Value>
@@ -12,20 +11,23 @@ public:
     LRUCache(size_t capacity, size_t max_size_bytes)
         : capacity_(capacity), max_size_bytes_(max_size_bytes), current_size_bytes_(0) {}
 
-    bool put(const Key& key, Value value) {
+    bool put(const Key& key, const Value& value) {
         size_t entry_size = calculateEntrySize(key, value);
+
+        // Проверка, что размер элемента не превышает максимальный допустимый размер кэша
         if (entry_size > max_size_bytes_) {
             std::cout << "!STORERR!" << std::endl;
             return false;
         }
 
-        // Если ключ уже существует, перемещаем его в начало списка
+        // Если ключ уже существует, обновляем элемент и перемещаем в начало
         if (cache_map_.find(key) != cache_map_.end()) {
-            cache_items_list_.erase(cache_map_[key]);
-            current_size_bytes_ -= calculateEntrySize(key, cache_map_[key]->second);
+            auto it = cache_map_[key];
+            current_size_bytes_ -= calculateEntrySize(it->first, it->second);
+            cache_items_list_.erase(it);
         }
 
-        // Если кэш полон по байтам или числу записей, удаляем элементы
+        // Если кэш полон по размеру или числу элементов, удаляем последние
         while (cache_items_list_.size() >= capacity_ || current_size_bytes_ + entry_size > max_size_bytes_) {
             auto last = cache_items_list_.back();
             current_size_bytes_ -= calculateEntrySize(last.first, last.second);
@@ -34,7 +36,7 @@ public:
         }
 
         // Вставляем новый элемент
-        cache_items_list_.push_front({ key, std::move(value) });
+        cache_items_list_.push_front({ key, value });
         cache_map_[key] = cache_items_list_.begin();
         current_size_bytes_ += entry_size;
 
@@ -42,11 +44,17 @@ public:
         return true;
     }
 
-    std::string get(const Key& key) {
+    Value get(const Key& key) {
         if (cache_map_.find(key) == cache_map_.end()) {
-            return "!NOEMBED!";
+            std::cout << "!NOEMBED!" << std::endl;
+            return Value();
         }
-        return key;
+
+        // Перемещаем найденный элемент в начало списка
+        auto it = cache_map_[key];
+        cache_items_list_.splice(cache_items_list_.begin(), cache_items_list_, it);
+
+        return it->second;
     }
 
     size_t size() const {
@@ -71,6 +79,6 @@ private:
     std::unordered_map<Key, typename std::list<std::pair<Key, Value>>::iterator> cache_map_;
 
     size_t calculateEntrySize(const Key& key, const Value& value) const {
-        return key.size() + value.size() * sizeof(float);
+        return key.size() + value.size() * sizeof(typename Value::value_type);
     }
 };

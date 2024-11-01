@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="test_hashtable.cpp" />
     <ClCompile Include="test_lru.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hashtable.hpp" />
     <ClInclude Include="lru.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

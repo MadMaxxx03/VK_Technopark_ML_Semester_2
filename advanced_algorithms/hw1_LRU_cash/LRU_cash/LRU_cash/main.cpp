@@ -51,7 +51,7 @@ void process_input(LRUCache<std::string, std::vector<float>>& cache) {
 }
 
 int main() {
-    std::cout << "Запустить тесты или программу? (t/p): ";
+    std::cout << "Run tests? (t/p): ";
     char choice;
     std::cin >> choice;
 
