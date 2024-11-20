@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\tests">
+      <UniqueIdentifier>{7bd7c853-a302-4c29-bbdb-296eef271cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\units">
+      <UniqueIdentifier>{daa9a964-a35a-4080-bf1e-bbffae9a8938}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aircraft.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\crew_members.cpp">
+      <Filter>Исходные файлы\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\passengers.cpp">
+      <Filter>Исходные файлы\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\plane.cpp">
+      <Filter>Исходные файлы\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="units\crew_members.cpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClCompile>
+    <ClCompile Include="units\passengers.cpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClCompile>
+    <ClCompile Include="units\plane.cpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="units\crew_members.hpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="units\passengers.hpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="units\plane.hpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClInclude>
+    <ClInclude Include="units\unit.hpp">
+      <Filter>Исходные файлы\units</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

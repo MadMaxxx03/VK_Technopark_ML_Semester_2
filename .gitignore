@@ -3,6 +3,7 @@
 *.pth
 *.pt
 *.yaml
+*.tsv
 **/data/
 **/data_old/
 **/logs/

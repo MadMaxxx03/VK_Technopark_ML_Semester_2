@@ -1,1 +1,14 @@
-﻿  aircraft2.vcxproj -> C:\Users\baben_bakg1j1\Programming\TechnoparkML\Semester2\advanced_algorithms\aircraft2\x64\Debug\aircraft2.exe
+﻿  aircraft2.cpp
+  test_crew_members.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: tests\test_crew_members.cpp: No such file or directory,
+  test_passengers.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: tests\test_passengers.cpp: No such file or directory,
+  test_plane.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: tests\test_plane.cpp: No such file or directory,
+  crew_members.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: units\crew_members.cpp: No such file or directory,
+  passengers.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: units\passengers.cpp: No such file or directory,
+  plane.cpp
+c1xx : fatal  error C1083: Не удается открыть файл источник: units\plane.cpp: No such file or directory,
+  Создание кода...

@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="aircraft2.cpp" />
+    <ClCompile Include="tests\test_crew_members.cpp" />
+    <ClCompile Include="tests\test_passengers.cpp" />
+    <ClCompile Include="tests\test_plane.cpp" />
+    <ClCompile Include="units\crew_members.cpp" />
+    <ClCompile Include="units\passengers.cpp" />
+    <ClCompile Include="units\plane.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="units\crew_members.hpp" />
+    <ClInclude Include="units\passengers.hpp" />
+    <ClInclude Include="units\plane.hpp" />
+    <ClInclude Include="units\unit.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -127,18 +142,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="aircraft2.cpp" />
-    <ClCompile Include="crew_members.cpp" />
-    <ClCompile Include="passengers.cpp" />
-    <ClCompile Include="plane.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="crew_members.hpp" />
-    <ClInclude Include="passengers.hpp" />
-    <ClInclude Include="plane.hpp" />
-    <ClInclude Include="unit.hpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

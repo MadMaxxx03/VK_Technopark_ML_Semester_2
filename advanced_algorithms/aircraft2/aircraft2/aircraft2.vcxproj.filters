@@ -13,36 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\units">
-      <UniqueIdentifier>{7fee776b-f837-4a6b-983b-d80119974ba1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="units\crew_members.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="units\passengers.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="units\plane.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\test_crew_members.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\test_passengers.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\test_plane.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
     <ClCompile Include="aircraft2.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="plane.cpp">
-      <Filter>Исходные файлы\units</Filter>
-    </ClCompile>
-    <ClCompile Include="passengers.cpp">
-      <Filter>Исходные файлы\units</Filter>
-    </ClCompile>
-    <ClCompile Include="crew_members.cpp">
-      <Filter>Исходные файлы\units</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="unit.hpp">
-      <Filter>Исходные файлы\units</Filter>
+    <ClInclude Include="units\crew_members.hpp">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="plane.hpp">
-      <Filter>Исходные файлы\units</Filter>
+    <ClInclude Include="units\passengers.hpp">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="passengers.hpp">
-      <Filter>Исходные файлы\units</Filter>
+    <ClInclude Include="units\plane.hpp">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="crew_members.hpp">
-      <Filter>Исходные файлы\units</Filter>
+    <ClInclude Include="units\unit.hpp">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

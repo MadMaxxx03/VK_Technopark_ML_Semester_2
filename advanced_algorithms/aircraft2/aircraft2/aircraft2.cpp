@@ -1,93 +1,108 @@
 ﻿#include <iostream>
 #include <sstream>
 #include <string>
-#include <vector>
 #include <memory>
 #include "plane.hpp"
 #include "crew_members.hpp"
 #include "passengers.hpp"
 
+void runCrewMembersTests();
+void runPassengersTests();
+void runPlaneTests();
+
+void runAllTests() {
+    std::cout << "Running crew member tests...\n";
+    runCrewMembersTests();
+
+    std::cout << "\nRunning passenger tests...\n";
+    runPassengersTests();
+
+    std::cout << "\nRunning plane tests...\n";
+    runPlaneTests();
+
+    std::cout << "\nAll tests completed.\n";
+}
+
 int main() {
-    // Переменные для хранения максимального веса багажа
+    // Вызов тестов
+    runAllTests();
+
     int maxEconomyLuggage = 0;
     int maxBusinessLuggage = 0;
     int maxFirstClassLuggage = 0;
 
-    // Создаем самолет
     Plane plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage);
 
-    // Читаем строки из ввода
-    std::string line;
-    int unitId = 0; // Уникальный идентификатор для каждого юнита
+    int unitId = 0;
 
+    // Чтение входных данных
+    std::string line;
     while (std::getline(std::cin, line)) {
+        if (line == "STOP") {
+            break;
+        }
+
         std::istringstream iss(line);
         std::string type;
         iss >> type;
 
+        if (type != "FIRST_CLASS_SEGMENT" && type != "BUSINESS_CLASS_SEGMENT" &&
+            type != "ECONOMY_CLASS_SEGMENT" && type != "PILOT" &&
+            type != "FLIGHT_ATTENDANT" && type != "ECONOMY" &&
+            type != "BUSINESS" && type != "FIRST_CLASS") {
+            std::cout << "Invalid input: " << line << std::endl;
+            continue; 
+        }
+
         // Обработка сегментов самолета
         if (type == "FIRST_CLASS_SEGMENT") {
             iss >> maxFirstClassLuggage;
-            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage); // обновляем самолет
+            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage);
         }
         else if (type == "BUSINESS_CLASS_SEGMENT") {
             iss >> maxBusinessLuggage;
-            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage); // обновляем самолет
+            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage);
         }
         else if (type == "ECONOMY_CLASS_SEGMENT") {
             iss >> maxEconomyLuggage;
-            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage); // обновляем самолет
+            plane = Plane(maxEconomyLuggage, maxBusinessLuggage, maxFirstClassLuggage);
         }
         else {
             // Обработка членов экипажа и пассажиров
             int handLuggage1 = 0, handLuggage2 = 0, luggage1 = 0, luggage2 = 0;
 
-            // Для экипажа
             if (type == "PILOT") {
                 std::shared_ptr<Unit> pilot = std::make_shared<Pilot>(unitId++);
-                if (plane.addUnit(pilot)) {
-                    std::cout << "Pilot with ID " << pilot->getId() << " successfully registered." << std::endl;
-                }
-                else {
-                    std::cout << "!!CANT REGISTER PILOT, ID = " << pilot->getId() << "!!" << std::endl;
-                }
+                plane.addUnit(pilot);
             }
             else if (type == "FLIGHT_ATTENDANT") {
                 std::shared_ptr<Unit> attendant = std::make_shared<FlightAttendant>(unitId++);
-                if (plane.addUnit(attendant)) {
-                    std::cout << "Flight attendant with ID " << attendant->getId() << " successfully registered." << std::endl;
-                }
-                else {
-                    std::cout << "!!CANT REGISTER FLIGHT ATTENDANT, ID = " << attendant->getId() << "!!" << std::endl;
-                }
+                plane.addUnit(attendant);
             }
-            // Для пассажиров
             else if (type == "ECONOMY") {
-                iss >> handLuggage1 >> luggage1; // один ручной и один багаж
-                std::shared_ptr<Unit> passenger = std::make_shared<EconomyPassenger>(unitId++, handLuggage1, luggage1);
-                if (!plane.addUnit(passenger)) {
-                    std::cout << "!!CANT REGISTER ECONOMY PASSENGER, ID = " << passenger->getId() << "!!" << std::endl;
+                iss >> handLuggage1 >> luggage1;
+                std::shared_ptr<Unit> economyPassenger = std::make_shared<EconomyPassenger>(unitId++, handLuggage1, luggage1);
+                if (!plane.addUnit(economyPassenger)) {
+                    std::cout << "!!CANT REGISTER ECONOMY PASSENGER, ID = " << economyPassenger->getId() << "!!\n";
                 }
             }
             else if (type == "BUSINESS") {
-                iss >> handLuggage1 >> handLuggage2 >> luggage1; // два ручных и один багаж
-                std::shared_ptr<Unit> passenger = std::make_shared<BusinessPassenger>(unitId++, handLuggage1, handLuggage2, luggage1, 0);
-                if (!plane.addUnit(passenger)) {
-                    std::cout << "!!CANT REGISTER BUSINESS PASSENGER, ID = " << passenger->getId() << "!!" << std::endl;
+                iss >> handLuggage1 >> handLuggage2 >> luggage1;
+                std::shared_ptr<Unit> businessPassenger = std::make_shared<BusinessPassenger>(unitId++, handLuggage1, handLuggage2, luggage1, 0);
+                if (!plane.addUnit(businessPassenger)) {
+                    std::cout << "!!CANT REGISTER BUSINESS PASSENGER, ID = " << businessPassenger->getId() << "!!\n";
                 }
             }
             else if (type == "FIRST_CLASS") {
-                iss >> handLuggage1 >> handLuggage2 >> luggage1 >> luggage2; // два ручных и два багажа
-                std::shared_ptr<Unit> passenger = std::make_shared<FirstClassPassenger>(unitId++, handLuggage1, handLuggage2, luggage1, luggage2);
-                if (!plane.addUnit(passenger)) {
-                    std::cout << "!!CANT REGISTER FIRST CLASS PASSENGER, ID = " << passenger->getId() << "!!" << std::endl;
+                iss >> handLuggage1 >> handLuggage2 >> luggage1 >> luggage2;
+                std::shared_ptr<Unit> firstClassPassenger = std::make_shared<FirstClassPassenger>(unitId++, handLuggage1, handLuggage2, luggage1, luggage2);
+                if (!plane.addUnit(firstClassPassenger)) {
+                    std::cout << "!!CANT REGISTER FIRST CLASS PASSENGER, ID = " << firstClassPassenger->getId() << "!!\n";
                 }
             }
         }
     }
 
-    // Выводим общий вес багажа на борту
-    std::cout << "Total luggage weight on the plane: " << plane.getTotalLuggageWeight() << " kg" << std::endl;
-
+    std::cout << "Total luggage weight: " << plane.getTotalLuggageWeight() << " kg\n";
     return 0;
 }
